@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!-- Document HTML en français -->
+<html lang="fr">
+<head>
+    <!-- Métadonnées essentielles pour le rendu et l'encodage -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmoEasy - Documentation Font Awesome</title>
+    <!-- Importation de la bibliothèque Font Awesome depuis CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Feuille de style personnalisée -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- En-tête du site avec logo et description -->
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-smile"></i> EmoEasy</h1>
+            <p>Documentation simple des icônes Font Awesome pour développeurs</p>
+        </div>
+    </header>
+
+    <!-- Contenu principal du site -->
+    <main class="container">
+        <!-- Section de recherche et filtrage des icônes -->
+        <section class="search-section">
+            <!-- Barre de recherche avec bouton -->
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Rechercher une icône...">
+                <button id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+            <!-- Boutons de filtrage par type d'icône -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Toutes</button>
+                <button class="filter-btn" data-filter="fab">Marques (fab)</button>
+                <button class="filter-btn" data-filter="fas">Solides (fas)</button>
+            </div>
+        </section>
+
+        <!-- Section d'affichage des icônes en grille -->
+        <section class="icons-section">
+            <h2>Icônes populaires</h2>
+            <!-- Conteneur pour les icônes générées par JavaScript -->
+            <div class="icons-grid" id="icons-container">
+                <!-- Les icônes seront générées dynamiquement ici par script.js -->
+            </div>
+        </section>
+
+        <!-- Section tutoriel expliquant comment utiliser Font Awesome -->
+        <section class="usage-section">
+            <h2>Comment utiliser</h2>
+            <div class="usage-container">
+                <!-- Étape 1: Inclusion de la bibliothèque -->
+                <div class="usage-card">
+                    <h3>1. Inclure Font Awesome</h3>
+                    <pre><code>&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;</code></pre>
+                </div>
+                <!-- Étape 2: Utilisation basique d'une icône -->
+                <div class="usage-card">
+                    <h3>2. Utiliser une icône</h3>
+                    <pre><code>&lt;i class="fab fa-instagram"&gt;&lt;/i&gt; Instagram</code></pre>
+                    <!-- Exemple visuel du résultat -->
+                    <div class="example">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </div>
+                </div>
+                <!-- Étape 3: Personnalisation CSS -->
+                <div class="usage-card">
+                    <h3>3. Personnaliser</h3>
+                    <pre><code>.fab.fa-instagram {
+    color: #E1306C;
+    font-size: 2rem;
+}</code></pre>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pied de page avec informations de copyright -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 EmoEasy - Créé pour simplifier l'utilisation des icônes Font Awesome</p>
+        </div>
+    </footer>
+
+    <!-- Chargement du script JavaScript pour la fonctionnalité interactive -->
+    <script src="script.js"></script>
+</body>
+</html>

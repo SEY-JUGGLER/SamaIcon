@@ -1,0 +1,517 @@
+/**
+ * Variables CSS globales
+ * Ces variables définissent les couleurs, espacements et effets utilisés dans tout le site
+ * L'utilisation de variables permet une cohérence visuelle et facilite les modifications
+ */
+:root {
+    /* Couleurs principales */
+    --primary-color: #4a6cf7;    /* Bleu principal utilisé pour les éléments importants */
+    --secondary-color: #6c757d;  /* Gris secondaire pour les éléments moins importants */
+    --background-color: #f8f9fa; /* Couleur de fond claire pour le site */
+    --card-background: #ffffff;  /* Blanc pour les cartes et conteneurs */
+    --text-color: #333333;       /* Gris foncé pour le texte principal */
+    --border-color: #e9ecef;     /* Gris clair pour les bordures */
+    --success-color: #28a745;    /* Vert pour les messages de succès */
+    --hover-color: #3a56d4;      /* Bleu plus foncé pour les états de survol */
+    
+    /* Effets et dimensions */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre standard */
+    --border-radius: 8px;                   /* Arrondi des coins */
+    --transition: all 0.3s ease;            /* Transition fluide standard */
+}
+
+/**
+ * Reset CSS et styles de base
+ * Normalisation des styles par défaut et définition des styles de base
+ */
+* {
+    margin: 0;          /* Supprime les marges par défaut */
+    padding: 0;         /* Supprime les rembourrages par défaut */
+    box-sizing: border-box; /* Inclut padding et border dans la largeur/hauteur */
+}
+
+/**
+ * Style du corps de la page
+ * Définit la police, la couleur de texte et l'arrière-plan pour tout le site
+ */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Police moderne et lisible */
+    line-height: 1.6;                /* Espacement des lignes pour une meilleure lisibilité */
+    color: var(--text-color);        /* Couleur de texte définie dans les variables */
+    background-color: var(--background-color); /* Couleur de fond définie dans les variables */
+}
+
+/**
+ * Conteneur principal
+ * Classe utilitaire pour centrer et limiter la largeur du contenu
+ */
+.container {
+    width: 90%;          /* Largeur responsive */
+    max-width: 1200px;    /* Largeur maximale sur grands écrans */
+    margin: 0 auto;       /* Centrage horizontal */
+    padding: 0 15px;      /* Espacement intérieur horizontal */
+}
+
+/**
+ * En-tête du site
+ * Styles pour la bannière supérieure contenant le logo et la description
+ */
+header {
+    background-color: var(--primary-color); /* Fond bleu */
+    color: white;                           /* Texte blanc pour contraste */
+    padding: 2rem 0;                        /* Espacement vertical */
+    text-align: center;                     /* Centrage du contenu */
+    box-shadow: var(--shadow);              /* Ombre portée pour effet de profondeur */
+}
+
+/* Titre principal du site */
+header h1 {
+    font-size: 2.5rem;       /* Taille grande pour mise en valeur */
+    margin-bottom: 0.5rem;    /* Espacement sous le titre */
+}
+
+/* Sous-titre / description du site */
+header p {
+    font-size: 1.2rem;    /* Taille plus petite que le titre */
+    opacity: 0.9;         /* Légèrement transparent pour hiérarchie visuelle */
+}
+
+/**
+ * Styles des sections principales
+ * Définit l'apparence générale du contenu principal et des titres de section
+ */
+
+/* Conteneur principal */
+main {
+    padding: 2rem 0;      /* Espacement vertical */
+}
+
+/* Chaque section thématique */
+section {
+    margin-bottom: 3rem;   /* Espacement entre les sections */
+}
+
+/**
+ * Titres de section (niveau 2)
+ * Inclut un effet de soulignement décoratif avec pseudo-élément
+ */
+h2 {
+    color: var(--primary-color);   /* Couleur bleue pour les titres */
+    margin-bottom: 1.5rem;          /* Espace sous le titre */
+    font-size: 1.8rem;              /* Taille de police */
+    position: relative;             /* Pour positionner la ligne décorative */
+    padding-bottom: 0.5rem;         /* Espace pour la ligne décorative */
+}
+
+/* Ligne décorative sous les titres h2 */
+h2::after {
+    content: '';                        /* Nécessaire pour les pseudo-éléments */
+    position: absolute;                  /* Positionnement absolu */
+    bottom: 0;                           /* Aligné au bas du titre */
+    left: 0;                             /* Aligné à gauche */
+    width: 50px;                         /* Largeur fixe */
+    height: 3px;                         /* Épaisseur de la ligne */
+    background-color: var(--primary-color); /* Même couleur que le titre */
+}
+
+/**
+ * Section de recherche et filtrage
+ * Styles pour la barre de recherche et les boutons de filtrage
+ */
+
+/* Conteneur de la section de recherche */
+.search-section {
+    margin-bottom: 2rem;  /* Espacement sous la section */
+}
+
+/**
+ * Barre de recherche
+ * Disposition en flexbox pour aligner l'input et le bouton
+ */
+.search-container {
+    display: flex;         /* Alignement horizontal */
+    margin-bottom: 1rem;   /* Espace sous la barre de recherche */
+}
+
+/* Champ de saisie de recherche */
+#search-input {
+    flex: 1;                /* Prend tout l'espace disponible */
+    padding: 12px 15px;     /* Rembourrage interne */
+    border: 1px solid var(--border-color);  /* Bordure légère */
+    border-radius: var(--border-radius) 0 0 var(--border-radius); /* Coins arrondis à gauche seulement */
+    font-size: 1rem;        /* Taille de texte */
+    transition: var(--transition);  /* Animation fluide */
+}
+
+/* État de focus du champ de recherche */
+#search-input:focus {
+    outline: none;                     /* Supprime le contour par défaut */
+    border-color: var(--primary-color); /* Bordure bleue quand actif */
+}
+
+/* Bouton de recherche */
+#search-button {
+    background-color: var(--primary-color); /* Fond bleu */
+    color: white;                           /* Texte blanc */
+    border: none;                           /* Sans bordure */
+    padding: 0 20px;                        /* Rembourrage horizontal */
+    border-radius: 0 var(--border-radius) var(--border-radius) 0; /* Coins arrondis à droite seulement */
+    cursor: pointer;                        /* Curseur main au survol */
+    transition: var(--transition);          /* Animation fluide */
+}
+
+/* État de survol du bouton de recherche */
+#search-button:hover {
+    background-color: var(--hover-color);  /* Bleu plus foncé au survol */
+}
+
+/**
+ * Conteneur des boutons de filtrage
+ * Utilise flexbox avec wrap pour s'adapter aux petits écrans
+ */
+.filter-container {
+    display: flex;      /* Alignement horizontal */
+    flex-wrap: wrap;    /* Passage à la ligne si nécessaire */
+    gap: 10px;          /* Espacement entre les boutons */
+}
+
+/* Boutons de filtrage */
+.filter-btn {
+    padding: 8px 15px;                      /* Rembourrage interne */
+    background-color: var(--card-background); /* Fond blanc */
+    border: 1px solid var(--border-color);    /* Bordure légère */
+    border-radius: var(--border-radius);      /* Coins arrondis */
+    cursor: pointer;                          /* Curseur main au survol */
+    transition: var(--transition);            /* Animation fluide */
+}
+
+/* État de survol des boutons de filtrage */
+.filter-btn:hover {
+    border-color: var(--primary-color);  /* Bordure bleue au survol */
+}
+
+/* État actif des boutons de filtrage */
+.filter-btn.active {
+    background-color: var(--primary-color); /* Fond bleu quand actif */
+    color: white;                           /* Texte blanc pour contraste */
+    border-color: var(--primary-color);     /* Bordure assortie au fond */
+}
+
+/**
+ * Section d'affichage des icônes
+ * Grille responsive et cartes d'icônes interactives
+ */
+
+/* Grille d'icônes responsive */
+.icons-grid {
+    display: grid;  /* Disposition en grille */
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Colonnes adaptatives */
+    gap: 20px;      /* Espacement entre les cartes */
+}
+
+/**
+ * Carte d'icône individuelle
+ * Élément cliquable avec effet de survol et animation
+ */
+.icon-card {
+    background-color: var(--card-background); /* Fond blanc */
+    border-radius: var(--border-radius);       /* Coins arrondis */
+    padding: 20px 10px;                        /* Rembourrage interne */
+    text-align: center;                        /* Centrage du contenu */
+    box-shadow: var(--shadow);                 /* Ombre légère */
+    transition: var(--transition);             /* Animation fluide */
+    cursor: pointer;                           /* Curseur main au survol */
+}
+
+/* Animation au survol de la carte */
+.icon-card:hover {
+    transform: translateY(-5px);                /* Léger déplacement vers le haut */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombre plus prononcée */
+}
+
+/* Icône à l'intérieur de la carte */
+.icon-card i {
+    font-size: 2rem;                  /* Taille de l'icône */
+    margin-bottom: 10px;               /* Espace sous l'icône */
+    color: var(--primary-color);       /* Couleur bleue */
+}
+
+/* Nom de l'icône */
+.icon-card .icon-name {
+    font-size: 0.9rem;                /* Taille de texte */
+    color: var(--secondary-color);    /* Couleur grise */
+}
+
+/* Classe CSS de l'icône (information technique) */
+.icon-card .icon-class {
+    font-size: 0.8rem;             /* Petite taille de texte */
+    color: var(--text-color);      /* Couleur de texte standard */
+    margin-top: 5px;               /* Espace au-dessus */
+    font-family: monospace;        /* Police à chasse fixe pour code */
+}
+
+/**
+ * Section d'utilisation (tutoriel)
+ * Présente les instructions d'utilisation de Font Awesome en étapes
+ */
+
+/* Conteneur des cartes d'utilisation en grille responsive */
+.usage-container {
+    display: grid;   /* Disposition en grille */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Colonnes adaptatives */
+    gap: 20px;       /* Espacement entre les cartes */
+}
+
+/* Carte individuelle d'étape d'utilisation */
+.usage-card {
+    background-color: var(--card-background); /* Fond blanc */
+    border-radius: var(--border-radius);       /* Coins arrondis */
+    padding: 20px;                            /* Rembourrage interne */
+    box-shadow: var(--shadow);                /* Ombre légère */
+}
+
+.usage-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+pre {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    overflow-x: auto;
+    margin-bottom: 15px;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+}
+
+.example {
+    margin-top: 15px;
+    font-size: 1.2rem;
+}
+
+.example i {
+    color: #E1306C;
+}
+
+/**
+ * Fenêtre modale pour les détails d'icône
+ * S'affiche lorsqu'un utilisateur clique sur une icône
+ * Contient l'icône agrandie, son nom et des extraits de code à copier
+ */
+
+/* Conteneur principal de la modal (fond semi-transparent) */
+.icon-modal {
+    display: none;                      /* Masqué par défaut */
+    position: fixed;                    /* Positionnement fixe (couvre tout l'écran) */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    z-index: 1000;                      /* Au-dessus de tous les autres éléments */
+    justify-content: center;            /* Centrage horizontal du contenu */
+    align-items: center;                /* Centrage vertical du contenu */
+}
+
+/* Contenu de la modal (carte blanche) */
+.modal-content {
+    background-color: var(--card-background); /* Fond blanc */
+    border-radius: var(--border-radius);       /* Coins arrondis */
+    padding: 30px;                            /* Rembourrage interne */
+    max-width: 500px;                         /* Largeur maximale */
+    width: 90%;                               /* Largeur responsive */
+    box-shadow: var(--shadow);                /* Ombre portée */
+    position: relative;                       /* Pour positionner le bouton de fermeture */
+}
+
+/* Bouton de fermeture (X) */
+.close-modal {
+    position: absolute;               /* Positionnement absolu */
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;                /* Taille du X */
+    cursor: pointer;                  /* Curseur main au survol */
+    color: var(--secondary-color);    /* Couleur grise */
+}
+
+/* Conteneur de l'icône dans la modal */
+.modal-icon {
+    text-align: center;      /* Centrage horizontal */
+    margin-bottom: 20px;     /* Espace sous l'icône */
+}
+
+/* Icône agrandie dans la modal */
+.modal-icon i {
+    font-size: 4rem;               /* Grande taille */
+    color: var(--primary-color);   /* Couleur bleue */
+}
+
+/* Titre dans les détails de la modal */
+.modal-details h3 {
+    margin-bottom: 15px;          /* Espace sous le titre */
+    color: var(--primary-color);   /* Couleur bleue */
+}
+
+/* Conteneur d'extrait de code */
+.code-snippet {
+    margin-bottom: 20px;   /* Espace sous chaque extrait */
+}
+
+/**
+ * Bouton de copie de code
+ * Inclut des états visuels pour le survol et la copie réussie
+ */
+.copy-btn {
+    background-color: var(--primary-color); /* Fond bleu */
+    color: white;                           /* Texte blanc */
+    border: none;                           /* Sans bordure */
+    padding: 8px 15px;                      /* Rembourrage interne */
+    border-radius: var(--border-radius);    /* Coins arrondis */
+    cursor: pointer;                        /* Curseur main au survol */
+    transition: var(--transition);          /* Animation fluide */
+    display: inline-flex;                   /* Pour aligner l'icône et le texte */
+    align-items: center;                    /* Centrage vertical */
+    gap: 5px;                               /* Espace entre l'icône et le texte */
+}
+
+/* État de survol du bouton de copie */
+.copy-btn:hover {
+    background-color: var(--hover-color);  /* Bleu plus foncé */
+}
+
+/* État de succès après copie */
+.copy-success {
+    background-color: var(--success-color);  /* Fond vert */
+}
+
+/**
+ * Pied de page
+ * Contient les informations de copyright et crédits
+ */
+footer {
+    background-color: var(--primary-color); /* Fond bleu assorti à l'en-tête */
+    color: white;                           /* Texte blanc pour contraste */
+    padding: 1.5rem 0;                      /* Espacement vertical */
+    text-align: center;                     /* Centrage du contenu */
+}
+
+/**
+ * Styles responsives
+ * Adaptations pour les écrans mobiles et tablettes
+ * S'appliquent aux écrans de moins de 768px de large
+ */
+@media (max-width: 768px) {
+    /* Passage à une colonne pour les cartes d'utilisation */
+    .usage-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Réduction de la taille des cartes d'icônes */
+    .icons-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    
+    /* Réduction de la taille du titre principal */
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    /* Réduction de la taille de la description */
+    header p {
+        font-size: 1rem;
+    }
+}
+
+/**
+ * Animation de chargement
+ * Affiche un spinner rotatif pendant le chargement des données
+ */
+
+/* Conteneur de l'animation centré horizontalement */
+.loading {
+    display: flex;              /* Flexbox pour centrage */
+    justify-content: center;    /* Centrage horizontal */
+    margin: 2rem 0;             /* Espacement vertical */
+}
+
+/* Spinner rotatif */
+.loading-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);        /* Bordure grise claire */
+    border-radius: 50%;                           /* Forme circulaire */
+    border-top: 4px solid var(--primary-color);   /* Segment coloré (bleu) */
+    width: 40px;                                  /* Largeur fixe */
+    height: 40px;                                 /* Hauteur fixe */
+    animation: spin 1s linear infinite;           /* Animation de rotation */
+}
+
+/* Animation de rotation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }      /* Position initiale */
+    100% { transform: rotate(360deg); }   /* Rotation complète */
+}
+
+/**
+ * Messages de notification
+ * Styles pour les messages d'erreur et de succès
+ */
+
+/* Message d'erreur (fond rouge clair) */
+.error-message {
+    background-color: #f8d7da;            /* Fond rouge pâle */
+    color: #721c24;                       /* Texte rouge foncé */
+    padding: 15px;                        /* Rembourrage interne */
+    border-radius: var(--border-radius);  /* Coins arrondis */
+    margin-bottom: 20px;                  /* Espace sous le message */
+    text-align: center;                   /* Centrage du texte */
+}
+
+/* Message de succès (fond vert clair) */
+.success-message {
+    background-color: #d4edda;            /* Fond vert pâle */
+    color: #155724;                       /* Texte vert foncé */
+    padding: 15px;                        /* Rembourrage interne */
+    border-radius: var(--border-radius);  /* Coins arrondis */
+    margin-bottom: 20px;                  /* Espace sous le message */
+    text-align: center;                   /* Centrage du texte */
+}
+
+/**
+ * Infobulles (tooltips)
+ * Affiche une bulle d'information au survol d'un élément
+ */
+
+/* Conteneur de l'infobulle */
+.tooltip {
+    position: relative;       /* Pour positionner l'infobulle */
+    display: inline-block;     /* Comportement en ligne */
+}
+
+/* Texte de l'infobulle (masqué par défaut) */
+.tooltip .tooltiptext {
+    visibility: hidden;                      /* Masqué initialement */
+    width: 120px;                            /* Largeur fixe */
+    background-color: var(--secondary-color); /* Fond gris */
+    color: white;                            /* Texte blanc */
+    text-align: center;                      /* Centrage du texte */
+    border-radius: 6px;                      /* Coins arrondis */
+    padding: 5px;                            /* Rembourrage interne */
+    position: absolute;                      /* Positionnement absolu */
+    z-index: 1;                              /* Au-dessus des autres éléments */
+    bottom: 125%;                            /* Position au-dessus de l'élément */
+    left: 50%;                               /* Centrage horizontal */
+    margin-left: -60px;                      /* Ajustement pour centrage parfait */
+    opacity: 0;                              /* Transparent initialement */
+    transition: opacity 0.3s;                /* Animation d'apparition */
+    font-size: 0.8rem;                       /* Petite taille de texte */
+}
+
+/* Affichage de l'infobulle au survol */
+.tooltip:hover .tooltiptext {
+    visibility: visible;   /* Rend visible */
+    opacity: 1;            /* Opacité complète */
+}
