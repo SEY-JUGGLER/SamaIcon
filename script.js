@@ -374,8 +374,8 @@ function displayIcons(icons) {
     font-size: 2rem;
 }`;
             
-            // Afficher la modal
-            modal.style.display = 'flex';
+            // Afficher la modal avec notre nouvelle fonction
+            showModal();
         });
         
         // Ajouter la carte au conteneur
@@ -432,6 +432,48 @@ searchInput.addEventListener('keyup', (e) => {
     }
 });
 
+// Fermer la modal quand on clique en dehors du contenu (amélioration pour mobile)
+modal.addEventListener('click', (e) => {
+    // Si le clic est sur le fond de la modal (pas sur son contenu)
+    if (e.target === modal) {
+        hideModal();
+    }
+});
+
+// Empêcher le défilement du corps de la page quand la modal est ouverte
+function toggleBodyScroll(isModalOpen) {
+    if (isModalOpen) {
+        document.body.style.overflow = 'hidden'; // Empêche le défilement
+    } else {
+        document.body.style.overflow = ''; // Rétablit le défilement
+    }
+}
+
+// Mise à jour de l'affichage de la modal pour gérer le défilement et les transitions
+const showModal = () => {
+    // D'abord afficher la modal sans opacité
+    modal.style.display = 'flex';
+    // Forcer un reflow pour que la transition fonctionne
+    modal.offsetHeight;
+    // Ajouter la classe pour déclencher la transition d'opacité
+    modal.classList.add('visible');
+    toggleBodyScroll(true);
+};
+
+const hideModal = () => {
+    // Retirer la classe pour déclencher la transition de disparition
+    modal.classList.remove('visible');
+    // Attendre la fin de la transition avant de cacher complètement
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300); // Correspond à la durée de transition CSS (0.3s)
+    toggleBodyScroll(false);
+};
+
+// Mettre à jour le gestionnaire d'événement pour le bouton de fermeture
+const closeButton = modal.querySelector('.close-modal');
+closeButton.addEventListener('click', hideModal);
+
 /**
  * Configuration des boutons de filtrage
  * Chaque bouton de filtre (Toutes, Marques, Solides) est configuré pour:
@@ -448,6 +490,33 @@ filterButtons.forEach(button => {
         searchIcons();
     });
 });
+
+/**
+ * Support des gestes tactiles pour la modal
+ * Permet de fermer la modal en glissant vers le bas (swipe down)
+ */
+let touchStartY = 0;
+let touchEndY = 0;
+const modalContent = modal.querySelector('.modal-content');
+
+// Détecter le début du toucher
+modalContent.addEventListener('touchstart', (e) => {
+    touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+// Détecter la fin du toucher et calculer la direction
+modalContent.addEventListener('touchend', (e) => {
+    touchEndY = e.changedTouches[0].screenY;
+    handleSwipeGesture();
+}, { passive: true });
+
+// Gérer le geste de glissement
+function handleSwipeGesture() {
+    // Si le glissement vers le bas est suffisamment long (plus de 100px)
+    if (touchEndY - touchStartY > 100) {
+        hideModal(); // Fermer la modal
+    }
+}
 
 /**
  * Initialisation de l'application

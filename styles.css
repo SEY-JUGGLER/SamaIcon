@@ -316,6 +316,15 @@ code {
     z-index: 1000;                      /* Au-dessus de tous les autres éléments */
     justify-content: center;            /* Centrage horizontal du contenu */
     align-items: center;                /* Centrage vertical du contenu */
+    overflow-y: auto;                   /* Permet le défilement vertical si nécessaire */
+    padding: 20px 0;                    /* Ajoute un peu d'espace en haut et en bas */
+    opacity: 0;                         /* Commence transparent pour la transition */
+    transition: opacity 0.3s ease;      /* Transition fluide pour l'apparition/disparition */
+}
+
+/* Classe pour afficher la modal avec transition */
+.icon-modal.visible {
+    opacity: 1;                         /* Pleinement visible */
 }
 
 /* Contenu de la modal (carte blanche) */
@@ -327,6 +336,16 @@ code {
     width: 90%;                               /* Largeur responsive */
     box-shadow: var(--shadow);                /* Ombre portée */
     position: relative;                       /* Pour positionner le bouton de fermeture */
+    margin: auto;                             /* Centrage automatique */
+    transform: translateY(20px);              /* Commence légèrement décalé vers le bas */
+    opacity: 0;                               /* Commence transparent */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Transition fluide */
+}
+
+/* Animation du contenu quand la modal est visible */
+.icon-modal.visible .modal-content {
+    transform: translateY(0);                  /* Revient à sa position normale */
+    opacity: 1;                               /* Devient complètement visible */
 }
 
 /* Bouton de fermeture (X) */
@@ -424,6 +443,90 @@ footer {
     /* Réduction de la taille de la description */
     header p {
         font-size: 1rem;
+    }
+    
+    /* Ajustements pour la modal sur mobile */
+    .modal-content {
+        padding: 20px 15px;
+        max-width: 95%;
+        width: 95%;
+    }
+    
+    .modal-icon i {
+        font-size: 3rem;
+    }
+    
+    pre {
+        padding: 10px;
+        font-size: 0.85rem;
+        overflow-x: auto;
+    }
+    
+    .copy-btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/**
+ * Styles responsives pour très petits écrans (smartphones)
+ * Adaptations pour les écrans de moins de 480px de large
+ */
+@media (max-width: 480px) {
+    /* Réduction de la taille des cartes d'icônes pour les petits écrans */
+    .icons-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 10px;
+    }
+    
+    /* Ajustement de la taille des icônes dans les cartes */
+    .icon-card i {
+        font-size: 1.8rem;
+    }
+    
+    /* Réduction de la taille du texte dans les cartes */
+    .icon-card .icon-name {
+        font-size: 0.8rem;
+    }
+    
+    .icon-card .icon-class {
+        font-size: 0.7rem;
+    }
+    
+    /* Ajustements supplémentaires pour la modal sur très petits écrans */
+    .modal-content {
+        padding: 15px 10px;
+        width: 98%;
+    }
+    
+    .close-modal {
+        top: 10px;
+        right: 10px;
+        font-size: 1.2rem;
+    }
+    
+    .modal-icon i {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+    
+    .modal-details h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .code-snippet {
+        margin-bottom: 15px;
+    }
+    
+    pre {
+        padding: 8px;
+        font-size: 0.75rem;
+    }
+    
+    .copy-btn {
+        padding: 5px 10px;
+        font-size: 0.8rem;
     }
 }
 
